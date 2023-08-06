@@ -1,27 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap');
+
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* COLORS */
+  --main-bg-color: rgb(246, 239, 228);
+  --accent-bg-color: rgb(248, 225, 211);
+
+  /* FONTS */
+  --font-family-ibm: 'IBM Plex Sans', sans-serif;
+  --font-family-kanit: 'Kanit', sans-serif;
+  --font-family-outline: 'Londrina Outline', sans-serif;
+  --font-family-outline-2: 'Bungee Outline', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+
+/* COLOR CLASSES */
+.bg-color-main {
+  background-color: var(--main-bg-color);
 }
+.bg-color-accent {
+  background-color: var(--accent-bg-color);
+}
+
+.font-outline-2 {
+  font-family: var(--font-family-outline-2);
+}
+
+
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  box-sizing: border-box;
+  background-color: var(--main-bg-color);
+  font-family: var(--font-family-kanit);
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.banner-container.image-div {
+  display: block;
+}
+
+/* First clip path */
+.clip-path-1 {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+/* Second clip path */
+.clip-path-2 {
+  clip-path: circle(50% at 80% 30%);
 }
