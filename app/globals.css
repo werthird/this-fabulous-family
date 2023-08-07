@@ -10,6 +10,7 @@
   /* COLORS */
   --main-bg-color: rgb(246, 239, 228);
   --accent-bg-color: rgb(248, 225, 211);
+  --white-bg-color: rgb(255, 255, 255);
 
   /* FONTS */
   --font-family-ibm: 'IBM Plex Sans', sans-serif;
@@ -35,7 +36,7 @@
 
 body {
   box-sizing: border-box;
-  background-color: var(--main-bg-color);
+  background-color: var(--white-bg-color);
   font-family: var(--font-family-kanit);
   font-weight: 300;
   font-size: 16px;
@@ -47,14 +48,4 @@ body {
 
 .banner-container.image-div {
   display: block;
-}
-
-/* First clip path */
-.clip-path-1 {
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-}
-
-/* Second clip path */
-.clip-path-2 {
-  clip-path: circle(50% at 80% 30%);
 }

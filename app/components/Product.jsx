@@ -5,22 +5,20 @@ import Link from 'next/link';
 const Product = ({ product: { image, name, slug, price } }) => {
 
   return (
-    <div className='flex flex-col items-center'>
-      <p>{name}</p>
-      <p>Slug: {slug}</p>
-      <p>Price: ${price}</p>
-      <Link href={`/product/${slug.current}`}>
-        <div className=''>
+    <div className='flex flex-col w-full h-full'>
+      <div className='overflow-hidden relative w-full h-full'>
+        <Link href={`/products/${slug}`} className=''>
           <img
             src={(image && image[0].url)}
             alt={name}
-            style={{ objectFit: "contain", width: "100%", height: '100%' }}
             width={1000}
             height={1000}
-            className=""
+            className="rounded-xl object-cover w-full h-full absolute top-0 left-0"
           />
-        </div>
-      </Link>
+        </Link>
+      </div>
+      <p>{name}</p>
+      <p className='font-bold'>${price}</p>
     </div>
   )
 };

@@ -6,23 +6,7 @@ const client = createClient({
     apiVersion: '2023-08-01',
   });
 
-
-export async function getProjects() {
-  return client.fetch(
-    groq`*[_type == 'project']{
-        _id,
-        _createdAt,
-        name,
-        "slug": slug.current,
-        "image": gallery[].asset->url,
-        url,
-        content
-      }
-    `
-  )
-};
-
-
+// GET ALL PRODUCTS
 export async function getProducts() {
   return client.fetch(
     groq`*[_type == 'product']{
@@ -33,13 +17,31 @@ export async function getProducts() {
           'url': asset->url
         },
         price,
-        "slug": slug.current,
+        'slug': slug.current,
       }
     `
   )
 };
 
+// GET ONE PRODUCT
+export async function getProduct(slug) {
+  return client.fetch(
+    groq`*[_type == 'product' && slug.current == $slug][0]{
+      _id,
+      name,
+      details,
+      image[] {
+        'url': asset->url
+      },
+      price,
+      'slug': slug.current,
+    }`,
+    { slug: slug }
+  );
+};
 
+
+// GET BANNER
 export async function getBanner() {
   return client.fetch(
     groq`*[_type == 'banner']{
