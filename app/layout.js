@@ -1,5 +1,7 @@
+import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import { StateContext } from './context/StateContext'
 
 import './globals.css'
 
@@ -10,16 +12,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className='flex flex-col items-center'>
+    <StateContext>
+      <html lang="en">
+        <body className='flex flex-col items-center'>
 
-        <Header />
+          <Header />
 
-        {children}
+          {children}
 
-        <Footer />
-        
-    </body>
-    </html>
+          <Footer />
+
+          <Toaster position='top-center'/>
+          
+      </body>
+      </html>
+    </StateContext>
   )
 }

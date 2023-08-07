@@ -27,7 +27,7 @@ const ProductBanner = async () => {
         <h3 className='text-[20px] md:text-[50px] font-extrabold'>{banner.midText}</h3>
         <h2 className='text-[40px] md:text-[120px] font-extrabold uppercase'>{banner.largeText1}</h2>
         <div>
-          <Link href={`/product/${banner.product}`}>
+          <Link href={`/products/${banner.product}`}>
             <button type='button' className='text-[20px] text-white uppercase font-semibold bg-red-500 p-2 rounded-xl md:my-10'>{banner.buttonText}</button>
           </Link>
         </div>

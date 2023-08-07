@@ -6,10 +6,7 @@ import React, { useState } from 'react';
 
 const ProductImage = ({image, name}) => {
 
-  
-
   const [index, setIndex] = useState(0);
-
 
   return (
     <div className='image-container w-[50%]'>
@@ -23,6 +20,7 @@ const ProductImage = ({image, name}) => {
       <div className='flex'>
         {image?.map((item, i) => (
           <img
+            key={i}
             src={(item && image[i].url)}
             alt={name}
             width={1000}
