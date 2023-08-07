@@ -1,30 +1,26 @@
 import React from 'react';
+import Link from 'next/link';
 
-import { getProducts } from '@/sanity/sanity.utils';
-import Image from 'next/image';
 
-const Product = async () => {
-
-  const [ products ] = await getProducts();
-  console.log(products)
+const Product = ({ product: { image, name, slug, price } }) => {
 
   return (
-    <div>
-      <p>{products.name}</p>
-      <p>{products.price}</p>
-      <p>{products.details}</p>
-      <div>
-        {products.image && (
-          <Image
-            src={products.image}
-            alt={products.name}
+    <div className='flex flex-col items-center'>
+      <p>{name}</p>
+      <p>Slug: {slug}</p>
+      <p>Price: ${price}</p>
+      <Link href={`/product/${slug.current}`}>
+        <div className=''>
+          <img
+            src={(image && image[0].url)}
+            alt={name}
             style={{ objectFit: "contain", width: "100%", height: '100%' }}
-            width={500}
-            height={500}
-            className="border border-black"
+            width={1000}
+            height={1000}
+            className=""
           />
-        )}
-      </div>
+        </div>
+      </Link>
     </div>
   )
 };

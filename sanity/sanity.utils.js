@@ -14,7 +14,7 @@ export async function getProjects() {
         _createdAt,
         name,
         "slug": slug.current,
-        "image": gallery[i].asset->url,
+        "image": gallery[].asset->url,
         url,
         content
       }
@@ -29,9 +29,11 @@ export async function getProducts() {
         _id,
         name,
         details,
-        "image": image.asset->url,
+        image[] {
+          'url': asset->url
+        },
         price,
-        slug
+        "slug": slug.current,
       }
     `
   )

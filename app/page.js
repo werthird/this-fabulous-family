@@ -6,11 +6,8 @@ import Image from 'next/image';
 import Product from './components/Product';
 
 
-
-
 export default async function Home() {
 
-  const projects = await getProjects();
   const products = await getProducts();
 
   return (
@@ -22,7 +19,15 @@ export default async function Home() {
 
       {/* <ProductBanner /> */}
 
-      <Product />
+      
+
+      <div className='flex justify-evenly w-[50%]'>
+        {products.map((product) => 
+          <div className='min-w-[150px] border border-black rounded-xl px-2 align-center'>
+            <Product key={product._id} product={product} />
+          </div>
+        )}
+      </div>
 
       {/* RECOMMENDED PRODUCTS */}
       <div className='w-[80%]'>

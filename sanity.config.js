@@ -1,11 +1,10 @@
 import {defineConfig} from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
-import imageUrlBuilder from '@sanity/image-url';
 import schemas from './sanity/schemas';
 
 
-const config = defineConfig({
+export const config = defineConfig({
   projectId: 'x1vygdo4',
   dataset: 'production',
   title: 'this-fabulous-family-boosted',
