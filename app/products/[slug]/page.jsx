@@ -9,7 +9,8 @@ import RecProducts from '@/app/components/RecProducts';
 const ProductDetails = async ({ params }) => {
 
   const slug = params.slug;
-  const { name, image, details, price } = await getProduct(slug);
+  const product = await getProduct(slug);
+  const { name, image, details, price } = product;
   const products = await getProducts();
 
   return (
@@ -17,7 +18,7 @@ const ProductDetails = async ({ params }) => {
 
       <ProductImage image={image} name={name} />
 
-      <ProductInfo name={name} details={details} price={price} />
+      <ProductInfo product={product} />
       
       <RecProducts products={products} />
       
