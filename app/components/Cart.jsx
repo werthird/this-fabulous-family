@@ -1,15 +1,15 @@
 import React from 'react'
 import { useStateContext } from '../context/StateContext';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiFillCloseCircle, AiOutlineShopping, AiOutlineClose } from 'react-icons/ai';
-import { BsCart2 } from 'react-icons/bs'
+import { BsCart2 } from 'react-icons/bs';
+import { TiDelete } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
-import ProductCounter from './ProductCounter';
 
 
 const Cart = () => {
 
-  const { setShowCart, totalQuantities, cartItems } = useStateContext();
+  const { setShowCart, totalQuantities, cartItems, totalPrice, toggleCartItemQuantity, onRemove } = useStateContext();
 
   return (
     <>
@@ -28,7 +28,7 @@ const Cart = () => {
           <span className='text-[14px] mx-4 text-red-600'>({totalQuantities} items)</span>
           <button
             type='button'
-            className='ml-auto font-semibold flex items-center'
+            className='ml-auto font-semibold flex items-center hover:scale-110'
             onClick={() => {setShowCart(false)}}
           >Close<AiFillCloseCircle className='ml-1 h-[20px] w-[20px]' /></button>
         </div>
@@ -49,27 +49,65 @@ const Cart = () => {
           </div>
         )}
 
+
         {/* IF ITEMS IN CART */}
-        <div className='mt-16'>
+        <div className='mt-16 h-[70%] overflow-y-auto'>
           {cartItems.length >= 1 && cartItems.map((item) => (
-            <div className='flex' key={item._id}>
-              <img
-                src={(item.image && item.image[0].url)}
-                alt={item.name}
-                width={1000}
-                height={1000}
-                className='w-[100px] h-[100px] rounded-xl object-cover'
-              />
-              <div className='flex justify-between flex-wrap w-full mr-4 p-2 font-semibold'>
-                <h5 className=''>{item.name}</h5>
-                <p className=''>${item.price}</p>
-                <div className='w-full self-end'>
-                  <ProductCounter className='' quantity={item.quantity} />
+            <>
+              <div className='flex my-2' key={item._id}>
+                <img
+                  src={(item.image && item.image[0].url)}
+                  alt={item.name}
+                  width={1000}
+                  height={1000}
+                  className='w-[100px] h-[100px] rounded-xl object-cover'
+                />
+                <div className='flex justify-between flex-wrap w-full mr-4 p-2 font-semibold'>
+                  <h5 className=''>{item.name}</h5>
+                  <p className=''>${item.price}</p>
+                  <div className='w-[80%] self-end flex items-center'>
+                    <span 
+                      className='w-[40px] p-[8px] border border-gray-300 text-gray-500 hover:cursor-pointer hover:bg-gray-500 hover:text-white transition'
+                      onClick={() => toggleCartItemQuantity(item._id, 'dec') }
+                    >
+                      <AiOutlineMinus className='m-auto'/>
+                    </span>
+                    <span className='w-[34px] p-[4px] text-center border-y border-gray-300 text-gray-500'>
+                      {item.quantity}
+                    </span>
+                    <span 
+                      className='w-[40px] p-[8px] border border-gray-300 text-gray-500 hover:cursor-pointer hover:bg-gray-500 hover:text-white transition'
+                      onClick={() => toggleCartItemQuantity(item._id, 'inc') }
+                    >
+                      <AiOutlinePlus className='m-auto' />
+                    </span>
+                  </div>
+                  <button 
+                    type='button'
+                    className='self-end mb-[5px]'
+                    onClick={() => onRemove(item)}
+                  ><TiDelete className='h-[25px] w-[25px] hover:scale-110 text-red-600'/></button>
                 </div>
               </div>
-            </div>
+              <div className='w-full border-b border-gray-300'></div>
+            </>
           ))}
         </div>
+
+
+        {/* CART SUBTOTAL AND CHECKOUT */}
+        {cartItems.length >= 1 && (
+          <div className='flex flex-col mr-4 mt-4'>
+            <div className='flex justify-between font-semibold'>
+              <h3>Subtotal:</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <button 
+              type='button'
+              className='my-4 self-center text-[20px] w-[50%] p-[2px] rounded-xl bg-red-600 text-white'
+            >Pay With Strip</button>
+          </div>
+        )}
       </div>
     </>
     

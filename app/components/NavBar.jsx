@@ -22,12 +22,12 @@ const NavBar = () => {
         </div>
         <button 
           type='button' 
-          className='flex justify-between w-[60px] absolute right-0'
+          className='flex justify-between w-[68px] absolute right-0'
           onClick={() => {setShowCart(true)}}
         >
           <p>Cart</p>
-          <BsCart2 className='h-5 w-5' />
-          <span>{totalQuantities}</span>
+          <BsCart2 className='h-5 w-5 mr-[10px]' />
+          <span className='text-[12px] bg-red-600 w-[16px] h-[16px] rounded-full absolute right-0'>{totalQuantities}</span>
         </button>
       </div>
     </>

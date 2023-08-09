@@ -3,7 +3,6 @@
 import React from 'react';
 import { useStateContext } from '@/app/context/StateContext';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import ProductCounter from '../ProductCounter';
 
 const ProductInfo = ({ product }) => {
 
@@ -33,7 +32,24 @@ const ProductInfo = ({ product }) => {
 
         {/* QUANTITY */}
         <div className='flex items-center'>
-          <h4 className='font-bold mr-[10px]'>Quantity:</h4><ProductCounter />
+          <h4 className='font-bold mr-[10px]'>Quantity:</h4>
+          <div className='flex items-center'>
+            <span 
+              className='w-[40px] p-[8px] border border-gray-300 text-gray-500 hover:cursor-pointer hover:bg-gray-500 hover:text-white transition'
+              onClick={decQty}
+            >
+              <AiOutlineMinus className='m-auto'/>
+            </span>
+            <span className='w-[34px] p-[4px] text-center border-y border-gray-300 text-gray-500'>
+              {qty}
+            </span>
+            <span 
+              className='w-[40px] p-[8px] border border-gray-300 text-gray-500 hover:cursor-pointer hover:bg-gray-500 hover:text-white transition'
+              onClick={incQty}
+            >
+              <AiOutlinePlus className='m-auto' />
+            </span>
+          </div>
         </div>
 
 
