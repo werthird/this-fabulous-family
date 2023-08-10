@@ -20,8 +20,6 @@ export default function RootLayout({ children }) {
 
           {children}
 
-          <Footer />
-
           <Toaster position='top-center'/>
           
       </body>

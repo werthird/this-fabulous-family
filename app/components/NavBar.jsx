@@ -15,10 +15,10 @@ const NavBar = () => {
     <>
       <div className='flex justify-center items-center w-full mb-4 relative'>
         <div className='flex w-2/5 justify-around text-[14px] font-bold'>
-          <Link href={'../category/men'} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>MEN</Link>
-          <Link href={'../category/women'} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>WOMEN</Link>
-          <Link href={'../category/kids'} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>KIDS</Link>
-          <Link href={'../category/merch'} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>HOME</Link>
+          <Link href={''} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>MEN</Link>
+          <Link href={''} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>WOMEN</Link>
+          <Link href={''} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>KIDS</Link>
+          <Link href={''} className='hover:scale-110 hover:text-[#F7882F] hover:border-b hover:border-[#F7882F] transition'>HOME</Link>
         </div>
         <button 
           type='button' 

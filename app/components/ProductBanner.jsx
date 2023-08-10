@@ -17,15 +17,15 @@ const ProductBanner = async () => {
           src={banner.image}
           alt={banner.name}
           width={10000}
-          height={10000}
-          className="object-cover md:object-contain md:w-[100%] h-[50%] md:h-[100%]"
+          height={9000}
+          className="object-cover md:object-contain md:w-[100%] h-[50%] md:h-[100%] opacity-80"
         />
       )}
-      <div className='flex flex-col justify-evenly md:justify-center items-center md:items-start md:absolute top-0 w-full min-h-[40%] md:h-full md:p-16 p-4 bg-[#f6efe4] md:bg-transparent'>
+      <div className='flex flex-col justify-evenly md:justify-center items-center md:items-start md:absolute top-0 w-full min-h-[40%] md:h-full md:p-16 p-4 bg-[#f6efe4] md:bg-transparent text-white'>
         <p className='md:mt-8'>{banner.smallText}</p>
         <h3 className='text-[20px] md:text-[50px] font-extrabold'>{banner.midText}</h3>
         <h2 className='text-[40px] md:text-[120px] font-extrabold uppercase'>{banner.largeText1}</h2>
-        <Link href={`/products/${banner.slug}`}>
+        <Link href={`/products/be-still-shirt`}>
           <button type='button' className='text-[16px] md:text-[20px] text-white uppercase font-semibold bg-[#F7882F] p-2 px-4 rounded-xl my-2 md:my-10 hover:scale-110 transition'>{banner.buttonText}</button>
         </Link>
         <div className='md:self-end flex flex-col items-center md:items-end'>

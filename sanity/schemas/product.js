@@ -51,14 +51,16 @@ export default {
           { title: 'Mens', value: 'mens' },
           { title: 'Womens', value: 'womens' },
           { title: 'Kids', value: 'kids' },
-          { title: 'Merch', value: 'merch' },
+          { title: 'Home', value: 'home' },
+          { title: 'Mug', value: 'mug' },
+          { title: 'Phone Case', value: 'phone' },
         ]
       }
     },
     {
       name: 'details',
       title: 'Details',
-      type: 'string'
+      type: 'string',
     }
   ]
 };

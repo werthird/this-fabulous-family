@@ -4,6 +4,7 @@ import Infographic from './components/Infographic';
 import ProductBanner from './components/ProductBanner';
 import Image from 'next/image';
 import Product from './components/Product';
+// import localStorage from './localStorage';
 
 
 export default async function Home() {
