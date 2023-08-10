@@ -54,7 +54,8 @@ export async function getBanner() {
         midText,
         largeText1,
         largeText2,
-        saleTime
+        saleTime,
+        'slug': slug.current,
       }
     `
   )

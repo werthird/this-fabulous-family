@@ -43,6 +43,19 @@ export default {
       type: 'number',
     },
     {
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Mens', value: 'mens' },
+          { title: 'Womens', value: 'womens' },
+          { title: 'Kids', value: 'kids' },
+          { title: 'Merch', value: 'merch' },
+        ]
+      }
+    },
+    {
       name: 'details',
       title: 'Details',
       type: 'string'

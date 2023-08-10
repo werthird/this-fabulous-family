@@ -8,8 +8,8 @@
 
 :root {
   /* COLORS */
-  --main-bg-color: rgb(246, 239, 228);
-  --accent-bg-color: rgb(248, 225, 211);
+  --main-bg-color: #f6efe4;
+  --accent-bg-color: #DCC7AA;
   --white-bg-color: rgb(255, 255, 255);
 
   /* FONTS */
@@ -28,8 +28,21 @@
   background-color: var(--accent-bg-color);
 }
 
+.font-outline {
+  font-family: 'Londrina Outline', cursive;
+  color: rgba(255, 255, 255);
+  -webkit-text-stroke-width: 7px;
+  -webkit-text-stroke-color: black;
+}
+@media screen and (max-width: 768px) {
+  .font-outline-2 {
+    -webkit-text-stroke-width: 3px;
+  }
+}
+
 .font-outline-2 {
-  font-family: var(--font-family-outline-2);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 

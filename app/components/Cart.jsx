@@ -11,6 +11,7 @@ const Cart = () => {
 
   const { setShowCart, totalQuantities, cartItems, totalPrice, toggleCartItemQuantity, onRemove } = useStateContext();
 
+
   return (
     <>
       {/* BACKGROUND SHADE DIV */}
@@ -105,6 +106,7 @@ const Cart = () => {
             <button 
               type='button'
               className='my-4 self-center text-[20px] w-[50%] p-[2px] rounded-xl bg-red-600 text-white'
+              onClick={handleCheckout}
             >Pay With Strip</button>
           </div>
         )}

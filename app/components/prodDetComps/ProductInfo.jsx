@@ -7,7 +7,13 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 const ProductInfo = ({ product }) => {
 
   const { name, details, price } = product;
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart  } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  }
 
 
   return (
@@ -65,6 +71,7 @@ const ProductInfo = ({ product }) => {
           <button 
             type='button' 
             className='w-full max-w-[170px] py-[6px] bg-red-600 text-white hover:scale-110 transition'
+            onClick={handleBuyNow}
           >
             Buy Now
           </button>

@@ -1,9 +1,9 @@
-import { Toaster } from 'react-hot-toast'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import { Toaster } from 'react-hot-toast';
+import Footer from './components/Footer';
 import { StateContext } from './context/StateContext'
 
 import './globals.css'
+import Header from './components/Header';
 
 export const metadata = {
   title: 'This Fabulous Family',
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className='flex flex-col items-center'>
 
-          <Header />
+        <Header />
 
           {children}
 

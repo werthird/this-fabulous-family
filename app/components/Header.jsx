@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import { logoFont, logoFont2, outlineFont2 } from '../fonts';
 import Cart from './Cart';
 import { useStateContext } from '@/app/context/StateContext';
+import { VscDebugBreakpointLog } from 'react-icons/vsc';
 
 
 const Header = () => {
@@ -28,14 +29,17 @@ const Header = () => {
 
   return (
     <>
-      <div className='flex flex-col justify-between items-between w-full md:w-[80%] pt-4 mb-6 px-1 sticky top-0 bg-inherit rounded-b-2xl z-50'>
+      <header className='flex flex-col justify-between items-between w-full md:w-[80%] pt-4 mb-6 px-1 fixed top-0 rounded-b-2xl z-50 bg-white bg-opacity-80 shadow-lg shadow-white/80'>
 
-        <Link href={'/'} className='absolute z-10 text-[25px] font-[700]'><span className={logoFont.className}>This FABulous Family</span></Link>
+          <Link href={'/'} className='flex flex-col items-center absolute z-10 text-[25px] top-2'>
+            <span className={`${logoFont.className} font-outline-2`}>This <span className='text-[30px]'>FAB</span>ulous Family</span>
+            <span className='w-[90%] border-b border-[#F7882F] -mt-2'></span>
+            <span className=' flex items-center text-[12px] text-black font-semibold'>Foster <VscDebugBreakpointLog className='mx-[5px] text-[#F7882F]' /> Adoptive <VscDebugBreakpointLog className='mx-[5px] text-[#F7882F]' /> Biological</span>
+          </Link>
 
-        {width < breakpoint ? <BurgerMenu /> : <NavBar />}
+          {width < breakpoint ? <BurgerMenu /> : <NavBar />}
 
-        <div className='w-[98%] border-b border-black self-center'></div>
-      </div>
+      </header>
 
       {showCart && <Cart />}
     </>
