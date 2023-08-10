@@ -9,7 +9,7 @@ const ProductImage = ({image, name}) => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className='image-container w-[50%]'>
+    <div className='image-container w-full md:w-[50%]'>
       <img
         src={(image && image[index].url)}
         alt={name}

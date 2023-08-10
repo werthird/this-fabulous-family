@@ -16,17 +16,17 @@ const Cart = () => {
     <>
       {/* BACKGROUND SHADE DIV */}
       <div 
-        className='flex justify-end w-full h-screen z-[60] bg-black opacity-70 fixed'
+        className='hidden md:flex justify-end w-full h-screen z-[60] bg-black opacity-70 fixed'
         onClick={() => {setShowCart(false)}}
       ></div>
 
 
       {/* CART DIV */}
-      <div className='flex flex-col fixed right-0 w-[40%] max-w-[500px] h-screen z-[65] bg-white p-4'>
+      <div className='flex flex-col fixed right-0 w-[40%] w-full md:max-w-[500px] h-screen z-[65] bg-white p-4'>
         <div className='flex items-center'>
           <AiOutlineLeft className='h-[12px] hover:h-[16px] hover:w-[16px] hover:cursor-pointer' onClick={() => {setShowCart(false)}} />
           <span className='font-semibold'>Your Cart</span>
-          <span className='text-[14px] mx-4 text-red-600'>({totalQuantities} items)</span>
+          <span className='text-[14px] mx-4 text-[#F7882F]'>({totalQuantities} items)</span>
           <button
             type='button'
             className='ml-auto font-semibold flex items-center hover:scale-110'
@@ -40,13 +40,11 @@ const Cart = () => {
           <div className='flex flex-col items-center mt-20'>
             <BsCart2 size={150} className='mb-6'/>
             <h3 className=''>Your Shopping Cart is Empty</h3>
-            <Link href='/' className='mt-14'>
-              <button 
-                type='button'
-                onClick={() => {setShowCart(false)}}
-                className='p-[6px] bg-red-600 text-white rounded-lg hover:scale-110'
-              >Continue Shopping</button>
-            </Link>
+            <button 
+              type='button'
+              onClick={() => {setShowCart(false)}}
+              className='p-[6px] bg-[#F7882F] text-white rounded-lg hover:scale-110 mt-[50px]'
+            >Continue Shopping</button>
           </div>
         )}
 
@@ -87,7 +85,7 @@ const Cart = () => {
                     type='button'
                     className='self-end mb-[5px]'
                     onClick={() => onRemove(item)}
-                  ><TiDelete className='h-[25px] w-[25px] hover:scale-110 text-red-600'/></button>
+                  ><TiDelete className='h-[25px] w-[25px] hover:scale-110'/></button>
                 </div>
               </div>
               <div className='w-full border-b border-gray-300'></div>
@@ -105,8 +103,7 @@ const Cart = () => {
             </div>
             <button 
               type='button'
-              className='my-4 self-center text-[20px] w-[50%] p-[2px] rounded-xl bg-red-600 text-white'
-              onClick={handleCheckout}
+              className='my-4 self-center text-[20px] w-[50%] p-[2px] rounded-xl bg-[#F7882F] text-white'
             >Pay With Strip</button>
           </div>
         )}
