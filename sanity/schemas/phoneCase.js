@@ -1,6 +1,6 @@
 export default {
-  name: 'product',
-  title: 'Product',
+  name: 'phoneCase',
+  title: 'Phone Case',
   type: 'document',
   fields: [
     {
@@ -27,9 +27,6 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
-      options: {
-        maxLength: 90,
-      },
     },
     {
       name: 'slug',
@@ -61,9 +58,10 @@ export default {
       }
     },
     {
-      name: 'details',
-      title: 'Details',
-      type: 'string',
+      name: 'description',
+      title: 'Description',
+      type: 'array',
+      of: [{ type: 'block' }]
     }
   ]
 };

@@ -22,14 +22,13 @@ export async function getProducts() {
     `
   )
 };
-
 // GET ONE PRODUCT
 export async function getProduct(slug) {
   return client.fetch(
     groq`*[_type == 'product' && slug.current == $slug][0]{
       _id,
       name,
-      details,
+      description,
       image[] {
         'url': asset->url
       },
@@ -40,6 +39,41 @@ export async function getProduct(slug) {
   );
 };
 
+
+// GET ALL PHONE CASES
+export async function getPhoneCases() {
+  return client.fetch(
+    groq`*[_type == 'phoneCase']{
+        _id,
+        name,
+        description,
+        image[] {
+          'url': asset->url
+        },
+        price,
+        category,
+        'slug': slug.current,
+      }
+    `
+  )
+};
+// GET ONE PHONE CASE
+export async function getPhoneCase(slug) {
+  return client.fetch(
+    groq`*[_type == 'phoneCase' && slug.current == $slug][0]{
+      _id,
+      name,
+      description,
+      image[] {
+        'url': asset->url
+      },
+      price,
+      category,
+      'slug': slug.current,
+    }`,
+    { slug: slug }
+  );
+};
 
 // GET BANNER
 export async function getBanner() {

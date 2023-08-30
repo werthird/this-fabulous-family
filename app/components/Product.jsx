@@ -2,12 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 
 
-const Product = ({ product: { image, name, slug, price } }) => {
+const Product = ({ product: { image, name, slug, price, category } }) => {
+
+  console.log(category)
 
   return (
     <div className='flex flex-col w-full h-full'>
       <div className='overflow-hidden relative w-full h-full'>
-        <Link href={`/products/${slug}`} className=''>
+        <Link 
+          href={`/products/${category}/${slug}`}
+          className=''>
           <img
             src={(image && image[0].url)}
             alt={name}
@@ -17,7 +21,7 @@ const Product = ({ product: { image, name, slug, price } }) => {
           />
         </Link>
       </div>
-      <p>{name}</p>
+      <p className='whitespace-nowrap overflow-hidden max-text-[16px]'>{name}</p>
       <p className='font-bold'>${price}</p>
     </div>
   )

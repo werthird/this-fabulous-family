@@ -4,12 +4,32 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiFillCloseCircle, AiOutl
 import { BsCart2 } from 'react-icons/bs';
 import { TiDelete } from 'react-icons/ti';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
+import getStripe from '../lib/getStripe';
 
 
 const Cart = () => {
 
   const { setShowCart, totalQuantities, cartItems, totalPrice, toggleCartItemQuantity, onRemove } = useStateContext();
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
 
   return (
@@ -52,8 +72,8 @@ const Cart = () => {
         {/* IF ITEMS IN CART */}
         <div className='mt-16 h-[70%] overflow-y-auto'>
           {cartItems.length >= 1 && cartItems.map((item) => (
-            <>
-              <div className='flex my-2' key={item._id}>
+            <div key={item._id}>
+              <div className='flex my-2'>
                 <img
                   src={(item.image && item.image[0].url)}
                   alt={item.name}
@@ -89,7 +109,7 @@ const Cart = () => {
                 </div>
               </div>
               <div className='w-full border-b border-gray-300'></div>
-            </>
+            </div>
           ))}
         </div>
 
@@ -104,6 +124,7 @@ const Cart = () => {
             <button 
               type='button'
               className='my-4 self-center text-[20px] w-[50%] p-[2px] rounded-xl bg-[#F7882F] text-white'
+              onClick={handleCheckout}
             >Pay With Strip</button>
           </div>
         )}

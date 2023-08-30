@@ -6,7 +6,8 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 
 const ProductInfo = ({ product }) => {
 
-  const { name, details, price } = product;
+  const { name, description, price } = product;
+  console.log(description)
   const { decQty, incQty, qty, onAdd, setShowCart  } = useStateContext();
 
   const handleBuyNow = () => {
@@ -33,10 +34,17 @@ const ProductInfo = ({ product }) => {
         <AiOutlineStar />
         <p className='ml-2'>(20)</p>
       </div>
-      <div className='my-[20px]'>
+
+
+      {/* DETAILS */}
+      <section className='my-[20px]'>
         <h4 className='text-[20px] font-bold'>Details:</h4>
-        <p>{details}</p>
-      </div>
+        <article className='ml-4 max-h-[200px] overflow-y-scroll overscroll-contain border border-gray-200 rounded-xl p-2 text-[14px]'>
+          {description.map((desc) =>
+            <p className='mb-4'>{desc.children[0].text}</p>
+          )}
+        </article>
+      </section>
 
 
       {/* QUANTITY */}

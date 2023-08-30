@@ -1,5 +1,5 @@
 import React from 'react';
-import { getProduct, getProducts, getPhoneCase } from '@/sanity/sanity.utils';
+import { getPhoneCase, getPhoneCases } from '@/sanity/sanity.utils';
 import Product from '@/app/components/Product';
 import ProductImage from '@/app/components/prodDetComps/ProductImage';
 import ProductInfo from '@/app/components/prodDetComps/ProductInfo';
@@ -10,24 +10,24 @@ const ProductDetails = async ({ params }) => {
   console.log(params, 'params here');
 
   const slug = params.slug;
-  const product = await getProduct(slug);
-  const { name, image, details, price } = product;
-  const products = await getProducts();
+  const phoneCase = await getPhoneCase(slug);
+  const { name, image, description, price } = phoneCase;
+  const phoneCases = await getPhoneCases();
 
   return (
     <div className='flex flex-wrap flex-col md:flex-row justify-evenly w-full md:w-[80%] mt-[100px]'>
 
       <ProductImage image={image} name={name} />
 
-      <ProductInfo product={product} />
+      <ProductInfo product={phoneCase} />
       
       
       <div className='flex flex-col items-center w-full mt-[120px] md:mt-[70px]'>
         <h2 className='text-[30px] font-bold mb-[20px]'>You may also like</h2>
         <div className='flex justify-evenly flex-wrap w-full'>
-          {products.map((product) => 
+          {phoneCases.slice(0, 4).map((phoneCase) => 
             <div className='w-[200px] h-[200px] md:hover:scale-110 transition'>
-              <Product key={product._id} product={product} />
+              <Product key={phoneCase._id} product={phoneCase} />
             </div>
           )}
         </div>
