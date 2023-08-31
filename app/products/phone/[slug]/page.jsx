@@ -1,8 +1,8 @@
 import React from 'react';
 import { getPhoneCase, getPhoneCases } from '@/sanity/sanity.utils';
 import Product from '@/app/components/Product';
-import ProductImage from '@/app/components/prodDetComps/ProductImage';
-import ProductInfo from '@/app/components/prodDetComps/ProductInfo';
+import ProductImage from '@/app/components/product/ProductImage';
+import ProductInfo from '@/app/components/product/ProductInfo';
 
 
 const ProductDetails = async ({ params }) => {
@@ -22,7 +22,7 @@ const ProductDetails = async ({ params }) => {
       <ProductInfo product={phoneCase} />
       
       
-      <div className='flex flex-col items-center w-full mt-[120px] md:mt-[70px]'>
+      <div className='flex flex-col items-center w-full md:mt-[120px]'>
         <h2 className='text-[30px] font-bold mb-[20px]'>You may also like</h2>
         <div className='flex justify-evenly flex-wrap w-full'>
           {phoneCases.slice(0, 4).map((phoneCase) => 

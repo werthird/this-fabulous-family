@@ -1,8 +1,8 @@
 import React from 'react';
 import { getProduct, getProducts, getPhoneCase } from '@/sanity/sanity.utils';
 import Product from '@/app/components/Product';
-import ProductImage from '@/app/components/prodDetComps/ProductImage';
-import ProductInfo from '@/app/components/prodDetComps/ProductInfo';
+import ProductImage from '@/app/components/product/ProductImage';
+import ProductInfo from '@/app/components/product/ProductInfo';
 
 
 const ProductDetails = async ({ params }) => {

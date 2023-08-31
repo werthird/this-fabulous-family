@@ -15,6 +15,7 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
+  const [phoneCaseType, setPhoneCaseType] = useState('');
 
 
   let foundProduct;
@@ -22,10 +23,13 @@ export const StateContext = ({ children }) => {
 
 
   // ADD TO CART
-  const onAdd = (product, quantity) => {
+  const onAdd = (product, quantity, phoneCaseType) => {
+
     const checkProductInCart = cartItems.find((item) => item._id === product._id);
 
-    setTotalPrice((prevTotalPrice) => prevTotalPrice + (product.price * quantity));
+    const productPrice = product.price * quantity;
+
+    setTotalPrice((prevTotalPrice) => parseFloat((prevTotalPrice + productPrice).toFixed(2)));
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
     if(checkProductInCart) {
@@ -38,8 +42,8 @@ export const StateContext = ({ children }) => {
       setCartItems(updatedCartItems);
     } else {
       product.quantity = quantity;
-
-      setCartItems([...cartItems, { ...product }]);
+      const newCartItem = { ...product, phoneCaseType };
+      setCartItems([...cartItems, newCartItem]);
     }
 
     toast.success(`${qty} ${product.name} added to the cart.`);
@@ -67,13 +71,13 @@ export const StateContext = ({ children }) => {
 
     if(value === 'inc') {
       setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 } ]);
-      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
-      setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
+      setTotalPrice((prevTotalPrice) => parseFloat((prevTotalPrice + foundProduct.price).toFixed(2)));
+      setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1);
     } else if(value === 'dec') {
       if (foundProduct.quantity > 1) {
         setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 } ]);
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
-        setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
+        setTotalPrice((prevTotalPrice) => parseFloat((prevTotalPrice - foundProduct.price).toFixed(2)));
+        setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1);
       }
     }
   }
@@ -105,6 +109,8 @@ export const StateContext = ({ children }) => {
         qty,
         incQty,
         decQty,
+        phoneCaseType,
+        setPhoneCaseType,
       }}
     >
       {children}

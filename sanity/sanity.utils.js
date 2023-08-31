@@ -46,13 +46,13 @@ export async function getPhoneCases() {
     groq`*[_type == 'phoneCase']{
         _id,
         name,
-        description,
+        'slug': slug.current,
+        category,
+        price,
         image[] {
           'url': asset->url
         },
-        price,
-        category,
-        'slug': slug.current,
+        description,
       }
     `
   )
@@ -63,17 +63,20 @@ export async function getPhoneCase(slug) {
     groq`*[_type == 'phoneCase' && slug.current == $slug][0]{
       _id,
       name,
-      description,
+      'slug': slug.current,
+      category,
+      price,
       image[] {
         'url': asset->url
       },
-      price,
-      category,
-      'slug': slug.current,
+      description,
     }`,
     { slug: slug }
   );
 };
+
+
+
 
 // GET BANNER
 export async function getBanner() {
